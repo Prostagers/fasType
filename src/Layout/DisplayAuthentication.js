@@ -2,8 +2,10 @@ import {
     Card, CardFooter, Button, CardTitle, CardBody
 } from 'reactstrap';
 
-import SignUp from './SignUp';
-import Login from './Login';
+import SignUp from '../Component/SignUp';
+import Login from '../Component/Login';
+
+import Dashboard from './Dashboard';
 
 const DisplayAuthentication = ({name, onClick}) => {
     return (

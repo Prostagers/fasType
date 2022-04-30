@@ -1,10 +1,9 @@
 import React from 'react';
 import { 
-    Navbar, NavbarBrand, NavbarToggler, NavLink, NavItem, Collapse, Nav, DropdownToggle,
-    DropdownMenu, DropdownItem, UncontrolledDropdown, NavbarText
+    Navbar, NavbarBrand, NavbarToggler, NavLink, NavItem, Collapse, Nav
 } from 'reactstrap';
 
-const Header = () => {
+const Header = ({item}) => {
     const [isOpen, setIsOpen] = React.useState(false);
     return (
         <Navbar container='fluid' color="secondary" expand="md" dark>
@@ -14,16 +13,11 @@ const Header = () => {
             <NavbarToggler onClick={() => setIsOpen(!isOpen)} />
             <Collapse isOpen={isOpen} navbar>
                 <Nav className="ms-auto" navbar>
-                    <NavItem>
-                        <NavLink href="#">
-                            <h5>Login</h5>
-                        </NavLink>
-                    </NavItem>
-                    <NavItem>
-                        <NavLink href="#">
-                            <h5>Register</h5>
-                        </NavLink>
-                    </NavItem>
+                    {item.map(item => (
+                        <NavItem key={item.id} onClick={item.onClick}>
+                            <NavLink href="#" onClick={item.onClick}><h5>{item.name}</h5></NavLink>
+                        </NavItem>
+                    ))}
                 </Nav>
             </Collapse>
         </Navbar>

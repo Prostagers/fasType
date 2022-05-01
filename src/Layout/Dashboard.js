@@ -6,7 +6,7 @@ const Dashboard = () => {
     return (
       <div className='text-center' id='main-content'>
         <h1>Welcome, {name} to fasType</h1>
-        <p><h4>Type as fast as you can think</h4></p>
+        <h4>Type as fast as you can think</h4>
       </div>
     );
 };

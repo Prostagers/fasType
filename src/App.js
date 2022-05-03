@@ -6,6 +6,7 @@ import './App.css';
 import Header from './Layout/Header';
 import Dashboard from './Layout/Dashboard';
 import DisplayAuthentication from './Layout/DisplayAuthentication';
+import Provider from './Provider/GlobalProvider';
 
 function App() {
   const [body, setBody] = useState(<Dashboard />);
@@ -21,10 +22,12 @@ function App() {
   }];
 
   return (
+    <Provider>
     <div className="App">
       <Header item={itemBeforeLogin}/>
       { body }
     </div>
+    </Provider>
   );
 }
 

@@ -8,7 +8,7 @@ const Header = ({item}) => {
     return (
         <Navbar container='fluid' color="secondary" expand="md" dark>
             <NavbarBrand href="/">
-                <h3>fasType</h3>
+                <h2>fasType</h2>
             </NavbarBrand>
             <NavbarToggler onClick={() => setIsOpen(!isOpen)} />
             <Collapse isOpen={isOpen} navbar>

@@ -1,21 +1,26 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import {
     Card, CardFooter, Button, CardTitle, CardBody
 } from 'reactstrap';
 
 import SignUp from '../Component/SignUp';
 import Login from '../Component/Login';
+import { validateLogin, validateSignup } from '../Component/Validator';
+import GlobalContext from '../Context/GlobalContext';
 
 const DisplayAuthentication = ({name}) => {
     const [signupData, setSignupData] = useState({});
     const [loginData, setLoginData] = useState({});
+    const context = useContext(GlobalContext);
 
-    const SignUpClick = () => {
-        console.log(signupData);
-    }
-
-    const LoginClick = () => {
-        console.log(loginData);
+    const HandleClick = () => {
+        context.resetSignupValidator();
+        context.resetLoginValidator();
+        
+        if(name === 'Login') 
+            validateLogin(loginData, context);
+        else
+            validateSignup(signupData, context);
     }
 
     return (
@@ -33,7 +38,7 @@ const DisplayAuthentication = ({name}) => {
             </CardBody>
             <CardFooter>
                 <div className='text-center'>
-                    <Button onClick={name === 'Login' ? LoginClick : SignUpClick} size='lg' id='signup'>{name}</Button>
+                    <Button onClick={HandleClick} size='lg' id='signup'>{name}</Button>
                 </div>
             </CardFooter>
         </Card>

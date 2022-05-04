@@ -13,7 +13,7 @@ const DisplayAuthentication = ({name}) => {
     const [loginData, setLoginData] = useState({});
     const context = useContext(GlobalContext);
 
-    const HandleClick = () => {
+    const onSubmit = () => {
         context.resetSignupValidator();
         context.resetLoginValidator();
         
@@ -38,7 +38,7 @@ const DisplayAuthentication = ({name}) => {
             </CardBody>
             <CardFooter>
                 <div className='text-center'>
-                    <Button onClick={HandleClick} size='lg' id='signup'>{name}</Button>
+                    <Button onClick={onSubmit} size='lg' id='signup'>{name}</Button>
                 </div>
             </CardFooter>
         </Card>

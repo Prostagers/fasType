@@ -10,7 +10,7 @@ const validateSignup = (data, {setSignupValidator}) => {
         setSignupValidator.setEmailInvalid(true)
     }
     // Phone
-    if(data.phone == null || data.phone === '' || data.phone.length !== 10) {
+    if(data.phone == null || data.phone === '' || data.phone.length !== 10 || data.phone === "[0-9]") {
         setSignupValidator.setPhoneInvalid(true)
     }
     // Password
@@ -23,18 +23,15 @@ const validateSignup = (data, {setSignupValidator}) => {
     }
 }
 
-const validateLogin = (data, {loginValidator, setLoginValidator}) => {
-    console.log(data);
-    console.log(loginValidator);
-    // Email
-    if(data.email == null || data.email === '') {
+const validateLogin = (data, {setLoginValidator}) => {
+    // Username
+    if(data.username == null || data.username === '') {
         setLoginValidator.setIsEmailEmpty(true)
     }
     // Password
     if(data.password == null || data.password === '') {
         setLoginValidator.setIsPasswordEmpty(true)
     }
-    console.log(setLoginValidator);
 }
 
 export { validateLogin, validateSignup };

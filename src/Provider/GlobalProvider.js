@@ -24,12 +24,33 @@ const Provider = props => {
     const resetLoginValidator = () => {
         setIsEmailEmpty(false);
         setIsPasswordEmpty(false);
-        console.log(isEmailEmpty, isPasswordEmpty);
     }
+
+    const headerBeforeLogin = [{
+        id: 1,
+        name: 'Login',
+        link: '/login',
+    }, {
+        id: 2,
+        name: 'Sign Up',
+        link: '/signup',
+    }];
+
+    const headerAfterLogin = [{
+        id: 1,
+        name: 'Login',
+        link: '/login',
+    }, {
+        id: 2,
+        name: 'Sign Up',
+        link: '/signup',
+    }];
 
     return (
         <GlobalContext.Provider value={{
             resetSignupValidator, resetLoginValidator,
+            headerBeforeLogin, headerAfterLogin,
+
             signupValidator: {
                 usernameValid, usernameInvalid, emailInvalid, phoneInvalid, passwordInvalid, passwordMatch
             },

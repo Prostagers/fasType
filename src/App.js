@@ -1,5 +1,8 @@
 import { useState } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 
+import 'react-toastify/dist/ReactToastify.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
@@ -9,23 +12,23 @@ import DisplayAuthentication from './Layout/DisplayAuthentication';
 import Provider from './Provider/GlobalProvider';
 
 function App() {
-  const [body, setBody] = useState(<Dashboard />);
-
-  const itemBeforeLogin = [{
-    id: 1,
-    name: 'Login',
-    onClick: () => setBody(<DisplayAuthentication name='Login' />)
-  }, {
-    id: 2,
-    name: 'Sign Up',
-    onClick: () => setBody(<DisplayAuthentication name='Sign Up' />)
-  }];
+  
+  const Routing = (
+    <Router>
+      <Routes>
+        <Route exact path="/" element={ <Dashboard /> } />
+        <Route exact path="/login" element={ <DisplayAuthentication name='Login' /> } />
+        <Route exact path="/signup" element={ <DisplayAuthentication name='Sign up' /> } />
+      </Routes>
+    </Router>
+  )
 
   return (
     <Provider>
     <div className="App">
-      <Header item={itemBeforeLogin}/>
-      { body }
+      <Header />
+      <ToastContainer />
+      { Routing }
     </div>
     </Provider>
   );

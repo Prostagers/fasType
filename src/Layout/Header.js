@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import GlobalContext from '../Context/GlobalContext';
 import { 
     Navbar, NavbarBrand, NavbarToggler, NavLink, NavItem, Collapse, Nav
 } from 'reactstrap';
 
-const Header = ({item}) => {
+const Header = () => {
+    const context = useContext(GlobalContext);
     const [isOpen, setIsOpen] = React.useState(false);
+    
+    const item = context.headerBeforeLogin;
+
     return (
         <Navbar container='fluid' color="secondary" expand="md" dark>
             <NavbarBrand href="/">
@@ -15,7 +20,7 @@ const Header = ({item}) => {
                 <Nav className="ms-auto" navbar>
                     {item.map(item => (
                         <NavItem key={item.id} onClick={item.onClick}>
-                            <NavLink href="#" onClick={item.onClick}><h5>{item.name}</h5></NavLink>
+                            <NavLink href={item.link} ><h5>{item.name}</h5></NavLink>
                         </NavItem>
                     ))}
                 </Nav>
